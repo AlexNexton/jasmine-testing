@@ -10,7 +10,9 @@ describe ("calculator", function(){
               expect(addition(2,2)).toBe(4);
          });  
          it("Should return error for string values", function(){
-             expect(addition("hitchhikers", "Guide")).toBe("Error!");
+             spyOn(window, "alert");
+             addition("hitchhikers", "Guide");
+             expect(window.alert).toHaveBeenCalledWith("Error!");
          });
     });
 
