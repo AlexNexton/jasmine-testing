@@ -1,17 +1,24 @@
-describe ("calculator", function(){
+describe ("Calculator", function(){
+
+        beforeEach(function(){
+             calc= new Calculator;
+        });
 
     describe("Addition Test" ,function(){
 
         it("should return 42", function(){
-
-            expect(addition(20,22)).toBe(42);
+                calc.add(20);
+                calc.add(22);
+            expect(calc.value).toBe(42);
         });
         it ("should return 4", function(){
-              expect(addition(2,2)).toBe(4);
+              calc.add(2);
+              calc.add(2);
+             expect(calc.value).toBe(4);
          });  
          it("Should return error for string values", function(){
              spyOn(window, "alert");
-             addition("hitchhikers", "Guide");
+             calc.add("hitchhikers");
              expect(window.alert).toHaveBeenCalledWith("Error!");
          });
     });
